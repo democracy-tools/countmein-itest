@@ -13,7 +13,11 @@ type Device struct {
 	coordinate *Coordinate
 	speed      int
 	seen       map[string]int
+	typ        string
 }
+
+// type HackerProxy struct {
+// }
 
 func NewDevice(area *Rectangle) *Device {
 
@@ -22,13 +26,14 @@ func NewDevice(area *Rectangle) *Device {
 		coordinate: newDeviceCoordinate(area),
 		speed:      rand.Intn(10) + 1,
 		seen:       make(map[string]int),
+		typ:        "ios",
 	}
 }
 
 func newDeviceCoordinate(area *Rectangle) *Coordinate {
 
 	return &Coordinate{
-		Latitute:  area.coordinate.Latitute + float64(rand.Intn(area.breadth))/10000,
+		Latitude:  area.coordinate.Latitude + float64(rand.Intn(area.breadth))/10000,
 		Longitude: area.coordinate.Longitude + float64(rand.Intn(area.length))/10000,
 	}
 }
@@ -53,7 +58,7 @@ func (d *Device) Scan(tick int, nearby func(*Coordinate) []*Device) {
 func (d *Device) Move() {
 
 	dest := &Coordinate{
-		Latitute:  d.coordinate.Latitute + step(d.speed),
+		Latitude:  d.coordinate.Latitude + step(d.speed),
 		Longitude: d.coordinate.Longitude + step(d.speed),
 	}
 	log.Infof("[MOVE] device %s (speed %d) is moving %s -> %s", d.id, d.speed, d.coordinate, dest)

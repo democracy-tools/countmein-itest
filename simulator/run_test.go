@@ -6,5 +6,5 @@ import (
 
 func TestRun(t *testing.T) {
 
-	NewRealm(30).Run(1000)
+	NewRealm(50).Run(1000)
 }

@@ -15,14 +15,12 @@ type Rectangle struct {
 
 func NewRealm(devices int) *Realm {
 
-	rect := &Rectangle{coordinate: &Coordinate{Latitute: 32.0577, Longitude: 34.7666}, length: 200, breadth: 200}
+	rect := &Rectangle{coordinate: &Coordinate{Latitude: 32.0577, Longitude: 34.7666}, length: 200, breadth: 200}
 	return &Realm{
 		area:    rect,
 		devices: createDevices(devices, rect),
 	}
 }
-
-// hacker device id - uuid + number
 
 func (r *Realm) Run(ticks int) {
 
@@ -58,8 +56,8 @@ func (r *Realm) nearby(coordinate *Coordinate) []*Device {
 
 func distance(c1 *Coordinate, c2 *Coordinate) float64 {
 
-	radlat1 := float64(math.Pi * c1.Latitute / 180)
-	radlat2 := float64(math.Pi * c2.Latitute / 180)
+	radlat1 := float64(math.Pi * c1.Latitude / 180)
+	radlat2 := float64(math.Pi * c2.Latitude / 180)
 
 	theta := float64(c1.Longitude - c2.Longitude)
 	radtheta := float64(math.Pi * theta / 180)
