@@ -1,7 +1,6 @@
 package itest
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -16,12 +15,7 @@ func init() {
 	}
 }
 
-func GetAnnouncementsUrl() string {
-
-	return fmt.Sprintf("%s/announcements", getEnvOrExit("BASE_URL"))
-}
-
-func getEnvOrExit(variable string) string {
+func GetEnvOrExit(variable string) string {
 
 	res := os.Getenv(variable)
 	if res == "" {
